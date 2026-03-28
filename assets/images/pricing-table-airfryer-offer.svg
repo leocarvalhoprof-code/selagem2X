@@ -1,0 +1,144 @@
+<svg width="1600" height="1120" viewBox="0 0 1600 1120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leftCardBg" x1="80" y1="170" x2="640" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F7F8"/>
+      <stop offset="1" stop-color="#ECEEF2"/>
+    </linearGradient>
+    <linearGradient id="rightCardBg" x1="760" y1="90" x2="1400" y2="890" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171B18"/>
+      <stop offset="1" stop-color="#0C0E0C"/>
+    </linearGradient>
+    <linearGradient id="winnerBorder" x1="760" y1="90" x2="1400" y2="890" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7A00"/>
+      <stop offset="0.5" stop-color="#FFB000"/>
+      <stop offset="1" stop-color="#FF7A00"/>
+    </linearGradient>
+    <linearGradient id="winnerTag" x1="948" y1="48" x2="1212" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7A00"/>
+      <stop offset="1" stop-color="#FFC83D"/>
+    </linearGradient>
+    <linearGradient id="winnerButton" x1="860" y1="786" x2="1310" y2="786" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16A34A"/>
+      <stop offset="0.5" stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#16A34A"/>
+    </linearGradient>
+    <linearGradient id="buttonShine" x1="930" y1="748" x2="1110" y2="824" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softShadow" x="-40" y="-40" width="680" height="840" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#111827" flood-opacity="0.16"/>
+    </filter>
+    <filter id="winnerShadow" x="700" y="20" width="760" height="1060" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#FF7A00" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+    <filter id="buttonGlow" x="820" y="860" width="530" height="220" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#22C55E" flood-opacity="0.36"/>
+    </filter>
+    <filter id="glowOrange" x="940" y="120" width="520" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+    <filter id="glowGray" x="0" y="220" width="620" height="620" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+  </defs>
+
+  <g opacity="0.8">
+    <ellipse cx="250" cy="520" rx="150" ry="120" fill="#CBD5E1" fill-opacity="0.28" filter="url(#glowGray)"/>
+    <ellipse cx="1170" cy="540" rx="180" ry="280" fill="#FF7A00" fill-opacity="0.22" filter="url(#glowOrange)"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="80" y="170" width="560" height="690" rx="34" fill="url(#leftCardBg)"/>
+    <rect x="81.5" y="171.5" width="557" height="687" rx="32.5" stroke="#D2D7DF" stroke-width="3"/>
+  </g>
+
+  <g filter="url(#winnerShadow)">
+    <rect x="760" y="90" width="640" height="940" rx="38" fill="url(#rightCardBg)"/>
+    <rect x="762.5" y="92.5" width="635" height="935" rx="35.5" stroke="url(#winnerBorder)" stroke-width="5"/>
+  </g>
+
+  <g>
+    <rect x="948" y="48" width="264" height="62" rx="31" fill="url(#winnerTag)"/>
+    <text x="1080" y="87" text-anchor="middle" fill="#111111" font-family="'Arial Black', Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="1.4">MAIS POPULAR</text>
+  </g>
+
+  <g>
+    <text x="360" y="250" text-anchor="middle" fill="#7C8797" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="1.8">OFERTA DE ENTRADA</text>
+    <text x="360" y="305" text-anchor="middle" fill="#101828" font-family="'Arial Black', Arial, sans-serif" font-size="42" font-weight="900">Guia Rapido de Selagem</text>
+    <text x="360" y="390" text-anchor="middle" fill="#111827" font-family="'Arial Black', Arial, sans-serif" font-size="74" font-weight="900">R$ 10,00</text>
+    <text x="360" y="432" text-anchor="middle" fill="#6B7280" font-family="Arial, sans-serif" font-size="22" font-weight="700">Entrada simples para quem quer so o essencial</text>
+  </g>
+
+  <g>
+    <circle cx="145" cy="510" r="15" fill="#9CA3AF"/>
+    <path d="M138 510L143 515L153 505" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="178" y="504" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">Acesso ao Protocolo Basico</text>
+    <text x="178" y="538" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">de Selagem</text>
+
+    <circle cx="145" cy="610" r="15" fill="#9CA3AF"/>
+    <path d="M138 610L143 615L153 605" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="178" y="604" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">Tabela Rapida de Tempo</text>
+    <text x="178" y="638" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">(3 Cortes)</text>
+
+    <circle cx="145" cy="710" r="15" fill="#9CA3AF"/>
+    <path d="M138 710L143 715L153 705" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="178" y="718" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">Risco Zero</text>
+  </g>
+
+  <g>
+    <rect x="130" y="774" width="460" height="70" rx="18" fill="#D9DDE4"/>
+    <rect x="131.5" y="775.5" width="457" height="67" rx="16.5" stroke="#C1C8D3" stroke-width="3"/>
+    <text x="360" y="818" text-anchor="middle" fill="#475467" font-family="'Arial Black', Arial, sans-serif" font-size="28" font-weight="900" letter-spacing="1">QUERO O BASICO</text>
+  </g>
+
+  <g>
+    <text x="1080" y="188" text-anchor="middle" fill="#FFB54A" font-family="Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="2">OFERTA PRINCIPAL</text>
+    <text x="1080" y="246" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="46" font-weight="900">Protocolo Completo +</text>
+    <text x="1080" y="298" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="46" font-weight="900">Mestre da Suculencia</text>
+    <text x="1080" y="398" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="92" font-weight="900">R$ 27,90</text>
+    <text x="1080" y="440" text-anchor="middle" fill="#B7C2B8" font-family="Arial, sans-serif" font-size="24" font-weight="700">Tudo que faz a carne barata parecer premium</text>
+  </g>
+
+  <g>
+    <circle cx="820" cy="510" r="16" fill="#FF7A00"/>
+    <path d="M813 510L818 515L828 504" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="854" y="503" fill="white" font-family="Arial, sans-serif" font-size="25" font-weight="800">Acesso Vitalicio ao Protocolo</text>
+    <text x="854" y="533" fill="white" font-family="Arial, sans-serif" font-size="25" font-weight="800">Selagem 2x Completo</text>
+
+    <circle cx="820" cy="580" r="16" fill="#FF7A00"/>
+    <path d="M813 580L818 585L828 574" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="854" y="574" fill="white" font-family="Arial, sans-serif" font-size="25" font-weight="800">Guia Mestre de Cortes Economicos</text>
+    <text x="854" y="604" fill="#FFD894" font-family="Arial, sans-serif" font-size="25" font-weight="800">(Acem a Picanha)</text>
+
+    <circle cx="820" cy="650" r="16" fill="#FF7A00"/>
+    <path d="M813 650L818 655L828 644" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="854" y="658" fill="white" font-family="Arial, sans-serif" font-size="25" font-weight="800">Tabela de Pontos Perfeitos e Anti-Erro</text>
+
+    <circle cx="820" cy="720" r="16" fill="#22C55E"/>
+    <text x="820" y="727" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="18" font-weight="900">+</text>
+    <text x="854" y="728" fill="#9BFFB7" font-family="'Arial Black', Arial, sans-serif" font-size="25" font-weight="900">BONUS 01: <tspan fill="white" font-family="Arial, sans-serif" font-weight="800">O Guia do Acougueiro</tspan></text>
+
+    <circle cx="820" cy="790" r="16" fill="#22C55E"/>
+    <text x="820" y="797" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="18" font-weight="900">+</text>
+    <text x="854" y="784" fill="#9BFFB7" font-family="'Arial Black', Arial, sans-serif" font-size="25" font-weight="900">BONUS 02:</text>
+    <text x="1008" y="784" fill="white" font-family="Arial, sans-serif" font-size="25" font-weight="800">Tabela de Tempo Completa</text>
+    <text x="1008" y="814" fill="white" font-family="Arial, sans-serif" font-size="25" font-weight="800">(Todos os Cortes)</text>
+
+    <circle cx="820" cy="860" r="16" fill="#22C55E"/>
+    <text x="820" y="867" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="18" font-weight="900">+</text>
+    <text x="854" y="868" fill="#9BFFB7" font-family="'Arial Black', Arial, sans-serif" font-size="25" font-weight="900">BONUS 03: <tspan fill="white" font-family="Arial, sans-serif" font-weight="800">Comunidade dos Mestres</tspan></text>
+  </g>
+
+  <g filter="url(#buttonGlow)">
+    <rect x="850" y="892" width="460" height="54" rx="18" fill="#13281B"/>
+    <rect x="852" y="894" width="456" height="50" rx="16" stroke="#2ECC71" stroke-width="3"/>
+    <text x="1080" y="927" text-anchor="middle" fill="#C7FFD8" font-family="'Arial Black', Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="1">GARANTIA TOTAL</text>
+
+    <rect x="850" y="952" width="460" height="72" rx="22" fill="url(#winnerButton)"/>
+    <rect x="852" y="954" width="456" height="68" rx="20" stroke="#A7F3D0" stroke-width="4"/>
+    <path d="M940 958H1128L1068 1024H880L940 958Z" fill="url(#buttonShine)" opacity="0.6"/>
+    <text x="1080" y="995" text-anchor="middle" fill="white" font-family="'Arial Black', Arial, sans-serif" font-size="26" font-weight="900" letter-spacing="0.8">QUERO A SUCULENCIA COMPLETA</text>
+  </g>
+</svg>
