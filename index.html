@@ -8,14 +8,24 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <!-- Preload Fonts Prioritário -->
-  <link rel="preload" href="assets/fonts/30a9f599069b49e4.woff2" as="font" type="font/woff2">
-  <link rel="preload" href="assets/fonts/bf444c56a814a25c.woff2" as="font" type="font/woff2">
-  <link rel="preload" href="assets/fonts/0f40c7ca5319a30c.woff2" as="font" type="font/woff2">
-  <link rel="preload" href="assets/fonts/98dee2bacc112c12.woff2" as="font" type="font/woff2">
+  <!-- Preload Fonts Prioritário - só essenciais -->
+  <link rel="preload" href="assets/fonts/30a9f599069b49e4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bf444c56a814a25c.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Preload Critical Images for Better LCP -->
+  <!-- Otimização LCP crítica para mobile -->
   <link rel="preload" href="assets/images/hero-optimized.webp" as="image" fetchpriority="high">
+  <link rel="dns-prefetch" href="//images.converteai.net">
+  <link rel="preconnect" href="https://pay.kiwify.com.br" crossorigin>
+
+  <!-- CSS crítico inline para primeira dobra -->
+  <style>
+    .hero-critical { display: block; }
+    .hero-image-critical {
+      aspect-ratio: 853/1280;
+      background: #000;
+      border-radius: 16px;
+    }
+  </style>
 
 
   <!-- CSS não-bloqueante para melhor LCP -->
@@ -31,15 +41,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- CSS de Reset Universal e Estabilidade -->
+  <!-- CSS crítico inline para primeira dobra -->
   <style>
     :root {
       background-color: #0a0a0a;
       color-scheme: dark;
     }
 
-    html,
-    body {
+    html, body {
       background: #000;
       margin: 0;
       padding: 0;
@@ -47,13 +56,61 @@
       min-height: 100dvh;
       overflow-x: hidden;
       color: #fff;
-      font-family: sans-serif;
-      /* Fallback até carregar */
+      font-family: system-ui, -apple-system, sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 24px;
+    /* Hero crítico */
+    .hero-critical {
+      display: block;
+      position: relative;
+      min-height: 500px;
+      background: linear-gradient(180deg, #0f0f10 0%, #070707 65%, #000 100%);
+    }
+
+    .hero-image-critical {
+      aspect-ratio: 853/1280;
+      background: #000;
+      border-radius: 16px;
+      max-width: 390px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Texto crítico */
+    .hero-title-critical {
+      font-size: clamp(20px, 6vw, 26px);
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle-critical {
+      font-size: clamp(14px, 3.5vw, 16px);
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto 24px;
+    }
+
+    /* Botão crítico */
+    .cta-critical {
+      display: inline-block;
+      background: linear-gradient(135deg, #FF6A00, #FAA429);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 15px rgba(255,106,0,0.4);
+      margin: 0 auto;
+      display: block;
+      max-width: 280px;
     }
   </style>
 
@@ -188,27 +245,58 @@
   <!-- CSS Principal -->
   <!-- VTurb VSL Optimization -->
   <script>
-    // Otimização LCP: Adiar imagens não-visíveis
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = document.querySelectorAll('img[loading="lazy"]');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src || img.src;
-            observer.unobserve(img);
+    // Otimização LCP crítica para mobile
+    (function() {
+      // Detectar conexão lenta e ajustar estratégia
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const isSlowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+
+      // Preload crítico apenas se conexão for boa
+      if (!isSlowConnection) {
+        const heroImg = new Image();
+        heroImg.src = 'assets/images/hero-optimized.webp';
+        heroImg.onload = function() {
+          document.querySelector('.hero-image-critical').style.backgroundImage = 'url(' + this.src + ')';
+        };
+      }
+
+      // Lazy loading inteligente
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mostrar conteúdo abaixo da dobra após LCP
+        setTimeout(function() {
+          const belowFold = document.getElementById('content-below-fold');
+          if (belowFold) belowFold.style.display = 'block';
+        }, 2000); // 2s para garantir LCP
+
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        const observerOptions = {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, observerOptions);
+
+        images.forEach(img => {
+          if (!img.dataset.src) {
+            img.dataset.src = img.src;
+            img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
+            img.classList.add('lazy');
           }
+          observer.observe(img);
         });
       });
-
-      images.forEach(img => {
-        if (!img.dataset.src) {
-          img.dataset.src = img.src;
-          img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
-        }
-        observer.observe(img);
-      });
-    });
+    })();
   </script>
   <link rel="preload" href="assets/js/5f6e19ce87fa20b5.js" as="script">
   <link rel="preload" href="assets/js/3b1ef61dd28bac40.js" as="script">
@@ -280,8 +368,33 @@
   <!-- Overlay de Segurança (Fundo Preto Puro) -->
   
 
-  <div id="root"><div class="min-h-screen relative"><!-- SECTION: S01 -->
-<section class="hero-section relative z-20 overflow-hidden pt-0 pb-0 lg:py-0 bg-black"><style>
+  <div id="root">
+    <!-- Hero crítico simplificado para LCP -->
+    <section class="hero-critical">
+      <div style="padding: 20px; text-align: center; max-width: 400px; margin: 0 auto;">
+        <h1 class="hero-title-critical">
+          CHEGA DE CARNE SECA NA AIR FRYER<br>
+          <span style="color: #FFD84D;">TRANSFORME QUALQUER CORTE BARATO</span><br>
+          EM CARNE MACIA E CROCANTE
+        </h1>
+
+        <p class="hero-subtitle-critical">
+          <span style="color: #FFD84D; font-weight: 700;">SELAGEM TÉRMICA 2X</span> na air fryer para travar o suco e criar crosta de churrascaria em minutos.
+        </p>
+
+        <div class="hero-image-critical" style="margin: 24px 0;">
+          <img src="assets/images/hero-optimized.webp" alt="Carne preparada na air fryer" loading="eager" fetchpriority="high" decoding="async" width="853" height="1280" style="width: 100%; height: auto; border-radius: 16px; display: block;">
+        </div>
+
+        <a href="https://pay.kiwify.com.br/uU1TJqq" class="cta-critical">
+          QUERO DESTRAVAR A SUCULÊNCIA
+        </a>
+      </div>
+    </section>
+
+    <!-- Resto da página carrega depois -->
+    <div style="display: none;" id="content-below-fold">
+      <div class="min-h-screen relative"><!-- SECTION: S01 -->
         .pill-animated { position: relative; overflow: hidden; animation: pillPulse 3s ease-in-out infinite; }
         @keyframes pillPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
         .gradient-green { color: #2AFF14; font-weight: 700; }
@@ -2453,6 +2566,8 @@
                 }
             </style></section><!-- SECTION: S18 -->
 <footer class="footer-section py-5 lg:py-[50px]"><div class="container-custom px-4"><div style="text-align:center; color:#bdbdbd; font-size:14px;">Copyright 2026 - Todos os direitos reservados</div></div></footer></div></div>
+    </div> <!-- Fecha content-below-fold -->
+  </div> <!-- Fecha root -->
 
 
   <!-- TRACKING & UTMS (Execução Otimizada) -->
