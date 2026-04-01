@@ -1704,7 +1704,7 @@
           }
         }
       </style></section><!-- SECTION: S13 -->
-<section data-edit="BG_023" id="promo-card-section" class="pricing-dual-section mobile-container-standard" style="background: rgb(0, 0, 0); padding: 80px 0px 100px;"><div id="pricing"></div><div class="pricing-dual-wrap"><div class="pricing-dual-head"><p class="pricing-dual-kicker">ESCOLHA SUA OFERTA</p><h2 class="pricing-dual-title">PEGUE O BÁSICO OU ENTRE NO <span class="text-gradient-orange font-bold">PROTOCOLO COMPLETO</span></h2><p class="pricing-dual-subtitle">A coluna da direita é a oferta principal, com tudo o que você precisa para parar de errar o ponto e fazer qualquer corte barato explodir em suculência.</p></div><div class="pricing-dual-grid"><article class="pricing-dual-card pricing-dual-card-basic"><div class="pricing-dual-card-top"><p class="pricing-dual-label">OFERTA DE ENTRADA</p><h3 class="pricing-dual-name">GUIA RÁPIDO DE SELAGEM</h3><div class="pricing-dual-price"><span class="pricing-dual-currency">R$</span><span class="pricing-dual-value">10,00</span></div><p class="pricing-dual-helper">Para quem quer começar pequeno</p></div><ul class="pricing-dual-list"><li>✓ Acesso ao Protocolo Básico de Selagem</li><li>✓ Tabela Rápida de Tempo (3 Cortes)</li><li>✓ Risco Zero</li></ul><a href="https://pay.kiwify.com.br/kCkNyJv" class="pricing-dual-btn pricing-dual-btn-basic">QUERO O BÁSICO</a></article><article id="main-offer-card" tabindex="-1" class="pricing-dual-card pricing-dual-card-main"><div class="pricing-dual-badge">MELHOR CUSTO-BENEFÍCIO</div><div class="pricing-dual-card-top"><p class="pricing-dual-label pricing-dual-label-main">OFERTA PRINCIPAL</p><h3 class="pricing-dual-name pricing-dual-name-main">PROTOCOLO COMPLETO +<br>MESTRE DA SUCULÊNCIA</h3><div class="pricing-dual-price pricing-dual-price-main"><span class="pricing-dual-currency pricing-dual-currency-main">R$</span><span class="pricing-dual-value pricing-dual-value-main">27,90</span></div><p class="pricing-dual-helper pricing-dual-helper-main">Tudo completo para fazer carne barata parecer picanha</p></div><ul class="pricing-dual-list pricing-dual-list-main"><li>🔥 Acesso Vitalício ao Protocolo Selagem 2x Completo</li><li>💎 Guia Mestre de Cortes Econômicos (Acém à Picanha)</li><li>✅ Tabela de Pontos Perfeitos e Anti-Erro</li><li>🎁 BÔNUS 01: O Guia do Açougueiro</li><li>🎁 BÔNUS 02: Tabela de Tempo Completa (Todos os Cortes)</li><li>🎁 BÔNUS 03: Comunidade dos Mestres</li><li>🛡️ Garantia Total</li></ul><a href="https://pay.kiwify.com.br/uU1TJqq" class="pricing-dual-btn pricing-dual-btn-main">QUERO A SUCULÊNCIA COMPLETA</a></article></div></div><style>
+<section data-edit="BG_023" id="promo-card-section" class="pricing-dual-section mobile-container-standard" style="background: rgb(0, 0, 0); padding: 80px 0px 100px;"><div id="pricing"></div><div class="pricing-dual-wrap"><div class="pricing-dual-head"><p class="pricing-dual-kicker">ESCOLHA SUA OFERTA</p><h2 class="pricing-dual-title">ENTRE NO <span class="text-gradient-orange font-bold">PROTOCOLO COMPLETO</span></h2><p class="pricing-dual-subtitle">Tudo o que você precisa para parar de errar o ponto e fazer qualquer corte barato explodir em suculência.</p></div><div class="pricing-dual-grid"><article id="main-offer-card" tabindex="-1" class="pricing-dual-card pricing-dual-card-main"><div class="pricing-dual-badge">MELHOR CUSTO-BENEFÍCIO</div><div class="pricing-dual-card-top"><p class="pricing-dual-label pricing-dual-label-main">OFERTA PRINCIPAL</p><h3 class="pricing-dual-name pricing-dual-name-main">PROTOCOLO COMPLETO +<br>MESTRE DA SUCULÊNCIA</h3><div class="pricing-dual-price pricing-dual-price-main"><span class="pricing-dual-currency pricing-dual-currency-main">R$</span><span class="pricing-dual-value pricing-dual-value-main">27,90</span></div><p class="pricing-dual-helper pricing-dual-helper-main">Tudo completo para fazer carne barata parecer picanha</p></div><ul class="pricing-dual-list pricing-dual-list-main"><li>🔥 Acesso Vitalício ao Protocolo Selagem 2x Completo</li><li>💎 Guia Mestre de Cortes Econômicos (Acém à Picanha)</li><li>✅ Tabela de Pontos Perfeitos e Anti-Erro</li><li>🎁 BÔNUS 01: O Guia do Açougueiro</li><li>🎁 BÔNUS 02: Tabela de Tempo Completa (Todos os Cortes)</li><li>🎁 BÔNUS 03: Comunidade dos Mestres</li><li>🛡️ Garantia Total</li></ul><a href="https://pay.kiwify.com.br/uU1TJqq" class="pricing-dual-btn pricing-dual-btn-main">QUERO A SUCULÊNCIA COMPLETA</a></article></div></div><style>
         .pricing-dual-section {
           position: relative;
           z-index: 20;
@@ -1749,9 +1749,12 @@
 
         .pricing-dual-grid {
           display: grid;
-          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+          grid-template-columns: 1fr;
           gap: 24px;
-          align-items: stretch;
+          align-items: center;
+          justify-items: center;
+          max-width: 500px;
+          margin: 0 auto;
         }
 
         .pricing-dual-card {
@@ -1761,12 +1764,6 @@
           display: flex;
           flex-direction: column;
           min-height: 100%;
-        }
-
-        .pricing-dual-card-basic {
-          background: linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
-          border: 1px solid #d1d5db;
-          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
         }
 
         .pricing-dual-card-main {
@@ -1932,13 +1929,6 @@
         .pricing-dual-btn:hover {
           transform: translateY(-1px);
           filter: brightness(1.05);
-        }
-
-        .pricing-dual-btn-basic {
-          background: #d1d5db;
-          color: #374151;
-          border: 1px solid #c4c9d1;
-          box-shadow: 0 8px 18px rgba(17, 24, 39, 0.10);
         }
 
         .pricing-dual-btn-main {
