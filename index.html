@@ -19,34 +19,27 @@
 
   <!-- CSS crítico inline para primeira dobra -->
   <style>
-    .hero-critical { display: block; }
-    .hero-image-critical {
-      aspect-ratio: 853/1280;
-      background: #000;
-      border-radius: 16px;
-    }
-  </style>
-
-
-  <!-- CSS não-bloqueante para melhor LCP -->
-  <link rel="preload" href="assets/css/ec05dd52eaffbaf8.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/ec05dd52eaffbaf8.css"></noscript>
-
-  <!-- Preconnect to payment domain for faster redirects -->
-  <link rel="preconnect" href="https://pay.kiwify.com.br">
-
-  <!-- Theme color for mobile browsers -->
-  <meta name="theme-color" content="#0a0a0a">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <!-- CSS crítico inline para primeira dobra -->
-  <style>
     :root {
       background-color: #0a0a0a;
       color-scheme: dark;
     }
+
+    html, body {
+      background: #000;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      color: #fff;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* Hero crítico para LCP */
+    .hero-image-container {
+      aspect-ratio: 853/1280;
+    }
+  </style>
 
     html, body {
       background: #000;
@@ -245,58 +238,32 @@
   <!-- CSS Principal -->
   <!-- VTurb VSL Optimization -->
   <script>
-    // Otimização LCP crítica para mobile
-    (function() {
-      // Detectar conexão lenta e ajustar estratégia
-      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      const isSlowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
-
-      // Preload crítico apenas se conexão for boa
-      if (!isSlowConnection) {
-        const heroImg = new Image();
-        heroImg.src = 'assets/images/hero-optimized.webp';
-        heroImg.onload = function() {
-          document.querySelector('.hero-image-critical').style.backgroundImage = 'url(' + this.src + ')';
-        };
-      }
-
-      // Lazy loading inteligente
-      document.addEventListener('DOMContentLoaded', function() {
-        // Mostrar conteúdo abaixo da dobra após LCP
-        setTimeout(function() {
-          const belowFold = document.getElementById('content-below-fold');
-          if (belowFold) belowFold.style.display = 'block';
-        }, 2000); // 2s para garantir LCP
-
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        const observerOptions = {
-          rootMargin: '50px 0px',
-          threshold: 0.01
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              if (img.dataset.src) {
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-              }
-              observer.unobserve(img);
+    // Otimização LCP simples para mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      // Lazy loading para imagens não críticas
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
             }
-          });
-        }, observerOptions);
-
-        images.forEach(img => {
-          if (!img.dataset.src) {
-            img.dataset.src = img.src;
-            img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
-            img.classList.add('lazy');
+            observer.unobserve(img);
           }
-          observer.observe(img);
         });
+      }, { rootMargin: '50px' });
+
+      images.forEach(img => {
+        if (!img.dataset.src) {
+          img.dataset.src = img.src;
+          img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=';
+          img.classList.add('lazy');
+        }
+        observer.observe(img);
       });
-    })();
+    });
   </script>
   <link rel="preload" href="assets/js/5f6e19ce87fa20b5.js" as="script">
   <link rel="preload" href="assets/js/3b1ef61dd28bac40.js" as="script">
@@ -368,33 +335,11 @@
   <!-- Overlay de Segurança (Fundo Preto Puro) -->
   
 
-  <div id="root">
-    <!-- Hero crítico simplificado para LCP -->
-    <section class="hero-critical">
-      <div style="padding: 20px; text-align: center; max-width: 400px; margin: 0 auto;">
-        <h1 class="hero-title-critical">
-          CHEGA DE CARNE SECA NA AIR FRYER<br>
-          <span style="color: #FFD84D;">TRANSFORME QUALQUER CORTE BARATO</span><br>
-          EM CARNE MACIA E CROCANTE
-        </h1>
-
-        <p class="hero-subtitle-critical">
-          <span style="color: #FFD84D; font-weight: 700;">SELAGEM TÉRMICA 2X</span> na air fryer para travar o suco e criar crosta de churrascaria em minutos.
-        </p>
-
-        <div class="hero-image-critical" style="margin: 24px 0;">
-          <img src="assets/images/hero-optimized.webp" alt="Carne preparada na air fryer" loading="eager" fetchpriority="high" decoding="async" width="853" height="1280" style="width: 100%; height: auto; border-radius: 16px; display: block;">
-        </div>
-
-        <a href="https://pay.kiwify.com.br/uU1TJqq" class="cta-critical">
-          QUERO DESTRAVAR A SUCULÊNCIA
-        </a>
-      </div>
-    </section>
-
-    <!-- Resto da página carrega depois -->
-    <div style="display: none;" id="content-below-fold">
-      <div class="min-h-screen relative"><!-- SECTION: S01 -->
+  <div id="root"><div class="min-h-screen relative"><!-- SECTION: S01 -->
+<section class="hero-section relative z-20 overflow-hidden pt-0 pb-0 lg:py-0 bg-black"><style>
+        .pill-animated { position: relative; overflow: hidden; animation: pillPulse 3s ease-in-out infinite; }
+        @keyframes pillPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+        .gradient-green { color: #2AFF14; font-weight: 700; }
         .pill-animated { position: relative; overflow: hidden; animation: pillPulse 3s ease-in-out infinite; }
         @keyframes pillPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
         .gradient-green { color: #2AFF14; font-weight: 700; }
@@ -2566,8 +2511,6 @@
                 }
             </style></section><!-- SECTION: S18 -->
 <footer class="footer-section py-5 lg:py-[50px]"><div class="container-custom px-4"><div style="text-align:center; color:#bdbdbd; font-size:14px;">Copyright 2026 - Todos os direitos reservados</div></div></footer></div></div>
-    </div> <!-- Fecha content-below-fold -->
-  </div> <!-- Fecha root -->
 
 
   <!-- TRACKING & UTMS (Execução Otimizada) -->
